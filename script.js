@@ -12,13 +12,13 @@ function getComputerChoice()
 function checkHumanChoise(choise)
 {
     switch(choise){
-        case "ROCK": return 1;
+        case "rock": return 1;
         break;
 
-        case "PAPER" : return 1;
+        case "paper" : return 1;
         break;
 
-        case "SCISSORS" : return 1;
+        case "scissors" : return 1;
         break;
 
         default:
@@ -33,21 +33,26 @@ function getHumanChoice()
     while(true)
     {
         choise = prompt("ROCK, PAPER OR SCISSORS");
-    if(checkHumanChoise(choise) == 1){
+    if(checkHumanChoise(choise.toLowerCase()) == 1){
         break;
     }
     }
-    switch(choise){
-        case "ROCK": return 0;
+    switch(choise.toLowerCase()){
+        case "rock": return 0;
         break;
 
-        case "PAPER" : return 1;
+        case "paper" : return 1;
         break;
 
-        case "SCISSORS" : return 2;
+        case "scissors" : return 2;
         break;
         default: return 99;
     }
+}
+
+function playRound(humanChoise,computerChoise)
+{
+
 }
 
 let humanScore = 0;
