@@ -62,10 +62,12 @@ function playRound(humanChoice,computerChoice)
                 }
                 if (computerChoice == 1){
                 alert("You lose! Paper beats rock");
+                computerScore++;
                 return;
                 }
                 if(computerChoice == 2){
                 alert("You win! Rock beats scissors");
+                humanScore++;
                 return;
                 }
         break;
@@ -75,10 +77,12 @@ function playRound(humanChoice,computerChoice)
             }
             if (computerChoice == 0){
             alert("You win! Paper beats rock");
+            humanScore++;
             return;
             }
             if(computerChoice == 2){
             alert("You lose! Scissors beats paper");
+            computerScore++;
             return;
             }
         break;
@@ -88,10 +92,12 @@ function playRound(humanChoice,computerChoice)
             }
             if (computerChoice == 1){
             alert("You win! Scissors beats paper");
+            humanScore++;
             return;
             }
             if(computerChoice == 0){
             alert("You lose! Rock beats scissors");
+            computerScore++;
             return;
             }
     break;
@@ -100,9 +106,27 @@ function playRound(humanChoice,computerChoice)
 
 let humanScore = 0;
 let computerScore = 0;
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-console.log(humanChoice);
-console.log(computerChoice);
 
-playRound(humanChoice,computerChoice);
+function playGame()
+{
+    
+    for(let i = 1 ; i <= 5 ; i++)
+    {
+        alert("Round " + i +
+         "\nYour Score: " + humanScore 
+        +"\nComputer Score: " + computerScore);
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice,computerChoice);
+    }
+    if(humanScore === computerScore)
+    alert("Equality!\n" + "\nYour Score: " + humanScore +"\nComputer Score: " + computerScore);
+    if(humanScore < computerScore)
+    alert("You lost!\n" + "\nYour Score: " + humanScore +"\nComputer Score: " + computerScore);
+    if(humanScore > computerScore)
+    alert("You won!\n" + "\nYour Score: " + humanScore +"\nComputer Score: " + computerScore);
+ 
+
+}
+
+playGame();
