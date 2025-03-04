@@ -5,9 +5,16 @@
 // PAPER = 1
 // SCISSORS = 2
 
-const options = document.querySelector(".options-container");
-options.addEventListener("click", (e) => {
-    alert(e.target.innerText);
+const options = document.querySelectorAll(".option");
+
+let userChoice = 0;
+options.forEach(button => {
+    button.addEventListener("click", (e) => {
+    optionsArray = Array.from(options);
+    userChoice = optionsArray.indexOf(e.target);
+    alert(userChoice);
+    });
+
 });
 
 
