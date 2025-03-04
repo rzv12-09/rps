@@ -1,0 +1,13 @@
+/*
+1. Create the logic to play 1 round
+- add 3 buttons for the user's choice(rock,paper or scissors)
+- add event listeners for the buttons
+- depending of what user clicks the event listener assigns to a variable(humanChoice)
+  the appropriate value then compare with computer choice;
+- update score
+
+2. Display the results for every round
+
+3. Test repeating 1 round until computer or user has  score 5
+
+*/

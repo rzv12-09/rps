@@ -4,55 +4,20 @@
 // ROCK = 0
 // PAPER = 1
 // SCISSORS = 2
+
+const options = document.querySelector(".options-container");
+options.addEventListener("click", (e) => {
+    alert(e.target.innerText);
+});
+
+
 function getComputerChoice()
 {
     return Math.floor(Math.random()*3)
 }
 
-function checkHumanChoice(choice)
-{
-    switch(choice){
-        case "rock": return 1;
-        break;
 
-        case "paper" : return 1;
-        break;
 
-        case "scissors" : return 1;
-        break;
-
-        default:
-            alert("Not A Valid Input");
-            break;
-    }
-    return 0;
-}
-
-function getHumanChoice()
-{
-    while(true)
-    {
-        choice = prompt("ROCK, PAPER OR SCISSORS");
-    if(checkHumanChoice(choice.toLowerCase()) == 1){
-        break;
-    }
-    }
-    switch(choice.toLowerCase()){
-        case "rock": return 0;
-        break;
-
-        case "paper" : return 1;
-        break;
-
-        case "scissors" : return 2;
-        break;
-        default: return 99;
-    }
-}
-
-// ROCK = 0 +
-// PAPER = 1
-// SCISSORS = 2
 function playRound(humanChoice,computerChoice)
 {
     switch(humanChoice){
@@ -129,4 +94,4 @@ function playGame()
 
 }
 
-playGame();
+//playGame();
