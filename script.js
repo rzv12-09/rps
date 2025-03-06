@@ -9,6 +9,7 @@ const round = document.querySelector("#round");
 const winner = document.querySelector("#winner");
 const userScoreDiv = document.querySelector("#user-score");
 const computerScoreDiv = document.querySelector("#computer-score");
+const scoreBox = document.querySelector(".score-box");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -77,11 +78,38 @@ function isGameOver() {
 
 function displayWinner() {
     const gameWinner = document.createElement("div");
+    gameWinner.classList.add("game-winner");
     humanScore > computerScore ? gameWinner.textContent = "YOU WON THE GAME!" 
     : gameWinner.textContent = "COMPUTER WON THE GAME!";
     gameWinner.style.color = "red";
     winner.insertAdjacentElement('afterend',gameWinner);
     
+}
+
+function askPlayAgain() {
+    const askDiv = document.createElement("div");
+    const confirmBtn = document.createElement("button");
+    askDiv.textContent = "Do you want to play again?";
+    scoreBox.appendChild(askDiv);
+    confirmBtn.textContent = "YES!";
+    askDiv.appendChild(confirmBtn);
+    confirmBtn.addEventListener("click", () => {
+        resetScore();
+        isEventEnabled = true;
+    })
+}
+
+function resetScore() {
+    humanScore = 0;
+    computerScore = 0;
+    currentRound = 1;
+    userScoreDiv.textContent = "Your Score: " + humanScore;
+    computerScoreDiv.textContent = "Computer Score: " + computerScore;
+    round.textContent = "Round: " + currentRound;
+    scoreBox.lastChild.remove();
+    winner.textContent = "";
+    const rmGameWinner = document.querySelector(".game-winner");
+    rmGameWinner.remove();
 }
 
 let isEventEnabled = true;
@@ -99,6 +127,7 @@ options.forEach(button => {
         if(isGameOver()) {
             isEventEnabled = false;
             displayWinner();
+            askPlayAgain();
         }
     }
     });
