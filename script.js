@@ -71,6 +71,9 @@ function playRound(humanChoice,computerChoice)
     }
 }
 
+function isGameOver() {
+    return computerScore === 5 || humanScore === 5;
+}
 
 options.forEach(button => {
     button.addEventListener("click", (e) => {
@@ -81,5 +84,8 @@ options.forEach(button => {
     computerScoreDiv.textContent = "Computer Score: " + computerScore;
     currentRound++;
     round.textContent = "Round: " + currentRound;
+    if(isGameOver()) {
+
+    }
     });
 });
