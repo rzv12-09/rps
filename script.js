@@ -12,6 +12,7 @@ const computerScoreDiv = document.querySelector("#computer-score");
 
 let humanScore = 0;
 let computerScore = 0;
+let currentRound = 0;
 
 function getComputerChoice()
 {
@@ -65,40 +66,20 @@ function playRound(humanChoice,computerChoice)
             computerScore++;
             return;
             }
+            
     break;
     }
 }
 
-let userChoice = 0;
+
 options.forEach(button => {
     button.addEventListener("click", (e) => {
     optionsArray = Array.from(options);
     userChoice = optionsArray.indexOf(e.target);
     playRound(userChoice,getComputerChoice());
+    userScoreDiv.textContent = "Your Score: " + humanScore;
+    computerScoreDiv.textContent = "Computer Score: " + computerScore;
+    currentRound++;
+    round.textContent = "Round: " + currentRound;
     });
 });
-
-
-function playGame()
-{
-    
-    for(let i = 1 ; i <= 5 ; i++)
-    {
-        alert("Round " + i +
-         "\nYour Score: " + humanScore 
-        +"\nComputer Score: " + computerScore);
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice,computerChoice);
-    }
-    if(humanScore === computerScore)
-    alert("Equality!\n" + "\nYour Score: " + humanScore +"\nComputer Score: " + computerScore);
-    if(humanScore < computerScore)
-    alert("You lost!\n" + "\nYour Score: " + humanScore +"\nComputer Score: " + computerScore);
-    if(humanScore > computerScore)
-    alert("You won!\n" + "\nYour Score: " + humanScore +"\nComputer Score: " + computerScore);
- 
-
-}
-
-//playGame();
