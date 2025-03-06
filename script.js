@@ -1,74 +1,67 @@
 
-
 //random number 0,1,2
 // ROCK = 0
 // PAPER = 1
 // SCISSORS = 2
 
 const options = document.querySelectorAll(".option");
+const round = document.querySelector("#round");
+const winner = document.querySelector("#winner");
+const userScoreDiv = document.querySelector("#user-score");
+const computerScoreDiv = document.querySelector("#computer-score");
 
-let userChoice = 0;
-options.forEach(button => {
-    button.addEventListener("click", (e) => {
-    optionsArray = Array.from(options);
-    userChoice = optionsArray.indexOf(e.target);
-    alert(userChoice);
-    });
-
-});
-
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice()
 {
     return Math.floor(Math.random()*3)
 }
 
-
-
 function playRound(humanChoice,computerChoice)
 {
     switch(humanChoice){
         case 0 : if(computerChoice == 0){ 
-                alert("Equality! No one wins");
+                winner.textContent = "Equality! No one wins";
                 return;
                 }
                 if (computerChoice == 1){
-                alert("You lose! Paper beats rock");
+                winner.textContent ="You lose! Paper beats rock";
                 computerScore++;
                 return;
                 }
                 if(computerChoice == 2){
-                alert("You win! Rock beats scissors");
+                winner.textContent = "You win! Rock beats scissors";
                 humanScore++;
                 return;
                 }
         break;
         case 1 : if(computerChoice == 1){ 
-            alert("Equality! No one wins");
+            winner.textContent = "Equality! No one wins";
             return;
             }
             if (computerChoice == 0){
-            alert("You win! Paper beats rock");
+            winner.textContent = "You win! Paper beats rock";
             humanScore++;
             return;
             }
             if(computerChoice == 2){
-            alert("You lose! Scissors beats paper");
+            winner.textContent = "You lose! Scissors beats paper";
             computerScore++;
             return;
             }
         break;
         case 2 : if(computerChoice == 2){ 
-            alert("Equality! No one wins");
+            winner.textContent = "Equality! No one wins";
             return;
             }
             if (computerChoice == 1){
-            alert("You win! Scissors beats paper");
+            winner.textContent = "You win! Scissors beats paper";
             humanScore++;
             return;
             }
             if(computerChoice == 0){
-            alert("You lose! Rock beats scissors");
+            winner.textContent = "You lose! Rock beats scissors";
             computerScore++;
             return;
             }
@@ -76,8 +69,15 @@ function playRound(humanChoice,computerChoice)
     }
 }
 
-let humanScore = 0;
-let computerScore = 0;
+let userChoice = 0;
+options.forEach(button => {
+    button.addEventListener("click", (e) => {
+    optionsArray = Array.from(options);
+    userChoice = optionsArray.indexOf(e.target);
+    playRound(userChoice,getComputerChoice());
+    });
+});
+
 
 function playGame()
 {
