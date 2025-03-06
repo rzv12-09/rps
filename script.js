@@ -75,6 +75,15 @@ function isGameOver() {
     return computerScore === 5 || humanScore === 5;
 }
 
+function displayWinner() {
+    const gameWinner = document.createElement("div");
+    humanScore > computerScore ? gameWinner.textContent = "YOU WON THE GAME!" 
+    : gameWinner.textContent = "COMPUTER WON THE GAME!";
+    gameWinner.style.color = "red";
+    winner.insertAdjacentElement('afterend',gameWinner);
+    
+}
+
 let isEventEnabled = true;
 
 options.forEach(button => {
@@ -87,9 +96,10 @@ options.forEach(button => {
         computerScoreDiv.textContent = "Computer Score: " + computerScore;
         currentRound++;
         round.textContent = "Round: " + currentRound;
-    }
-    if(isGameOver()) {
-        isEventEnabled = false;
+        if(isGameOver()) {
+            isEventEnabled = false;
+            displayWinner();
+        }
     }
     });
 });
