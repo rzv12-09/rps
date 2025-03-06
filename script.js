@@ -75,17 +75,21 @@ function isGameOver() {
     return computerScore === 5 || humanScore === 5;
 }
 
+let isEventEnabled = true;
+
 options.forEach(button => {
     button.addEventListener("click", (e) => {
-    optionsArray = Array.from(options);
-    userChoice = optionsArray.indexOf(e.target);
-    playRound(userChoice,getComputerChoice());
-    userScoreDiv.textContent = "Your Score: " + humanScore;
-    computerScoreDiv.textContent = "Computer Score: " + computerScore;
-    currentRound++;
-    round.textContent = "Round: " + currentRound;
+    if(isEventEnabled) {
+        optionsArray = Array.from(options);
+        userChoice = optionsArray.indexOf(e.target);
+        playRound(userChoice,getComputerChoice());
+        userScoreDiv.textContent = "Your Score: " + humanScore;
+        computerScoreDiv.textContent = "Computer Score: " + computerScore;
+        currentRound++;
+        round.textContent = "Round: " + currentRound;
+    }
     if(isGameOver()) {
-
+        isEventEnabled = false;
     }
     });
 });
